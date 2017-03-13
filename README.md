@@ -1,6 +1,6 @@
 # mem-treemap
 
-A toy so see memory usage in a [treemap] using [Electron] and [D3.js].  
+A toy to see memory usage in a [treemap] using [Electron] and [D3.js].  
 Yes, it consumes a lot of memory.  
 Yes, it also consumes a lot of CPU.  
 No, I don't care.
