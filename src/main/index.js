@@ -1,12 +1,12 @@
-import { readFile } from 'fs'
+import { exec } from 'child_process'
+import { app, BrowserWindow } from 'electron'
+import { totalmem } from 'os'
 import path from 'path'
 import url from 'url'
-import { app, BrowserWindow } from 'electron'
-import { exec } from 'child_process'
 
 let window
 let memmap
-let total = 0
+const TOTALMEM = totalmem() / 1024
 
 function memmapUnix () {
   return new Promise((resolve, reject) => {
@@ -35,10 +35,6 @@ switch (process.platform) {
 
   case 'linux':
     memmap = memmapUnix
-    readFile('/proc/meminfo', (err, data) => {
-      if (err) throw err
-      total = +/MemTotal:\s+(\d+) kB/.exec(data)[1]
-    })
     break
 
   default:
@@ -55,7 +51,7 @@ function create () {
   }))
   const timer = setInterval(() => {
     memmap().then(map => {
-      window.webContents.send('data', map, total)
+      window.webContents.send('data', map, TOTALMEM)
     })
   }, 1000)
   window.on('close', () => {
