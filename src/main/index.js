@@ -10,19 +10,41 @@ const TOTALMEM = totalmem() / 1024
 
 function memmapUnix () {
   return new Promise((resolve, reject) => {
-    exec('ps -eo pid,rss,command', (error, stdout) => {
+    exec('ps -eo pid,ppid,pgrp,rss,command', (error, stdout) => {
       if (error) {
         reject(error)
       } else {
-        resolve(stdout.split('\n').slice(1)
-          .map(x => /^\s*([1-9][0-9]*)\s+([1-9][0-9]*)\s+(.+)$/.exec(x))
+        const seenPids = new Set()
+        let data = stdout.split('\n').slice(1)
+          .map(x => /^\s*([1-9][0-9]*)\s+([1-9][0-9]*)\s+([1-9][0-9]*)\s+([1-9][0-9]*)\s+(.+)$/.exec(x))
           .filter(x => x)
-          .map(match => ({
-            pid: +match[1],
-            mem: +match[2],
-            command: match[3]
-          }))
-        )
+          .map(match => {
+            const pid = +match[1]
+            seenPids.add(pid)
+            // The ppid may be 0 for kernel helpers, coerce their parent to 1
+            // for simplicity.
+            let ppid = +match[2] || 1
+            let pgrp = +match[3]
+            return {
+              pid,
+              ppid,
+              pgrp,
+              mem: +match[4],
+              command: match[5],
+              shortCommand: match[5] ? match[5].split(' ')[0].split('/').pop() : ''
+            }
+          })
+        // fixup ppid's of 1 when there's a group id that maps to a currently
+        // existing pid.
+        for (const proc of data) {
+          if (proc.ppid === 1 &&
+              proc.pgrp &&
+              proc.pgrp !== proc.pid &&
+              seenPids.has(proc.pgrp)) {
+            proc.ppid = proc.pgrp
+          }
+        }
+        resolve(data)
       }
     })
   })

@@ -7,7 +7,26 @@
 		html, body, svg { height: 100% }
 		body { box-sizing: border-box; margin: 0; padding: 8px }
 		svg { width: 100% }
-		rect { stroke: #000 }
+
+text {
+  font: 10px sans-serif;
+}
+
+tspan:last-child {
+  font-size: 9px;
+  fill-opacity: 0.8;
+}
+
+.node rect {
+  shape-rendering: crispEdges;
+	stroke: #888;
+}
+
+.node.node--hover rect {
+  stroke: #000;
+	stroke-width: 2px;
+}
+
 		</style>
 	</head>
 	<body>
