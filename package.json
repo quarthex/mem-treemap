@@ -16,7 +16,7 @@
   "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.24.0",
-    "babel-loader": "^6.4.0",
+    "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
     "d3": "^4.7.2",
     "electron": "^1.6.2",
