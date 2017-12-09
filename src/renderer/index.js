@@ -3,8 +3,6 @@ import { ipcRenderer } from 'electron'
 
 const svg = document.querySelector('svg')
 
-const format = d3.format(",d");
-
 const treemap = d3.treemap()
   .tile(d3.treemapResquarify.ratio(1.618))
   .size([svg.clientWidth, svg.clientHeight])
@@ -24,7 +22,7 @@ function update (map, total) {
     .sum(d => d.mem)
     .sort((a, b) => b.data.mem - a.data.mem)
   // fixup the root node so there's empty space corresponding to free memory.
-  root.value = total;
+  root.value = total
 
   treemap(root)
 
@@ -35,9 +33,9 @@ function update (map, total) {
   // enter
   const enter = cell.enter()
     .append('g')
-    .attr("class", "node")
-    .on("mouseover", hovered(true))
-    .on("mouseout", hovered(false));
+    .attr('class', 'node')
+    .on('mouseover', hovered(true))
+    .on('mouseout', hovered(false))
   enter.append('rect')
   enter.append('clipPath').append('use')
   enter.append('text')
@@ -51,7 +49,7 @@ function update (map, total) {
   // update
   const update = cell.transition()
     .duration(1000)
-    .each(function(d) { d.node = this; })
+    .each(function (d) { d.node = this })
     .attr('transform', d => `translate(${d.x0}, ${d.y0})`)
 
   update.select('rect')
@@ -74,17 +72,16 @@ function update (map, total) {
     .text(d => d.data.pid ? `[${d.data.pid} : ${d.data.ppid}] ${d.data.command}` : '')
 }
 
-function hovered(hover) {
-  return function(d) {
-    d3.selectAll(d.ancestors().map(function(d) { return d.node; }))
-        .classed("node--hover", hover)
-      .select("rect")
-        .attr("width", function(d) { return d.x1 - d.x0 - hover; })
-        .attr("height", function(d) { return d.y1 - d.y0 - hover; });
-  };
+function hovered (hover) {
+  return d =>
+    d3.selectAll(d.ancestors().map(d => d.node))
+        .classed('node--hover', hover)
+      .select('rect')
+        .attr('width', d => d.x1 - d.x0 - hover)
+        .attr('height', d => d.y1 - d.y0 - hover)
 }
 
-let lastMap, lastTotal;
+let lastMap, lastTotal
 window.addEventListener('resize', () => {
   treemap.size([svg.clientWidth, svg.clientHeight])
   update(lastMap, lastTotal)
@@ -92,7 +89,7 @@ window.addEventListener('resize', () => {
 
 ipcRenderer.on('data', (_, map, total) => {
   // create a root node
-  map.push({ pid: 1, ppid: undefined, mem: 0, command: "memmap"})
+  map.push({ pid: 1, ppid: undefined, mem: 0, command: 'memmap' })
 
   lastMap = map
   lastTotal = total
