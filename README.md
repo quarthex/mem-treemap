@@ -25,6 +25,13 @@ Do you love Windows? I don't. Feel free to make a pull request.
 
 No.
 
+## Badges
+
+They're classy as fuck.
+
+[![David](https://img.shields.io/david/quarthex/mem-treemap.svg?style=for-the-badge)]()
+[![David](https://img.shields.io/david/dev/quarthex/mem-treemap.svg?style=for-the-badge)]()
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg?style=for-the-badge)](https://standardjs.com)
 
 [D3.js]: https://d3js.org/
 [Electron]: https://electron.atom.io/
