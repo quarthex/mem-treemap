@@ -29,8 +29,8 @@ No.
 
 They're classy as fuck.
 
-[![David](https://img.shields.io/david/quarthex/mem-treemap.svg?style=for-the-badge)]()
-[![David](https://img.shields.io/david/dev/quarthex/mem-treemap.svg?style=for-the-badge)]()
+[![David](https://img.shields.io/david/quarthex/mem-treemap.svg?style=for-the-badge)](https://david-dm.org/quarthex/mem-treemap)
+[![David](https://img.shields.io/david/dev/quarthex/mem-treemap.svg?style=for-the-badge)](https://david-dm.org/quarthex/mem-treemap?type=dev)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg?style=for-the-badge)](https://standardjs.com)
 
 [D3.js]: https://d3js.org/
