@@ -20,7 +20,7 @@
     "babel-preset-env": "^1.6.1",
     "d3": "^4.7.2",
     "electron": "^1.6.2",
-    "electron-builder": "^15.4.2",
+    "electron-builder": "^19.48.3",
     "eslint": "^3.17.1",
     "file-loader": "^0.10.1",
     "standard": "^9.0.1",
