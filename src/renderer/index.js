@@ -75,10 +75,10 @@ function update (map, total) {
 function hovered (hover) {
   return d =>
     d3.selectAll(d.ancestors().map(d => d.node))
-        .classed('node--hover', hover)
+      .classed('node--hover', hover)
       .select('rect')
-        .attr('width', d => d.x1 - d.x0 - hover)
-        .attr('height', d => d.y1 - d.y0 - hover)
+      .attr('width', d => d.x1 - d.x0 - hover)
+      .attr('height', d => d.y1 - d.y0 - hover)
 }
 
 let lastMap, lastTotal

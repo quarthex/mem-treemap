@@ -23,7 +23,7 @@
     "electron-builder": "^20.6.2",
     "eslint": "^4.13.0",
     "file-loader": "^1.1.5",
-    "standard": "^10.0.3",
+    "standard": "^11.0.1",
     "webpack": "^3.10.0"
   },
   "build": {
