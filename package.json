@@ -6,9 +6,9 @@
   "author": "Romain Déoux <romain.deoux@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "prod": "NODE_ENV=production webpack -p --progress",
-    "dev": "NODE_ENV=development webpack -d --progress",
-    "watch": "NODE_ENV=development webpack -d --progress --watch",
+    "prod": "NODE_ENV=production webpack-cli -p --progress",
+    "dev": "NODE_ENV=development webpack-cli -d --progress",
+    "watch": "NODE_ENV=development webpack-cli -d --progress --watch",
     "start": "electron app",
     "dist": "build",
     "test": "standard"
@@ -24,7 +24,8 @@
     "eslint": "^4.13.0",
     "file-loader": "^1.1.5",
     "standard": "^11.0.1",
-    "webpack": "^3.10.0"
+    "webpack": "^4.3.0",
+    "webpack-cli": "^2.0.13"
   },
   "build": {
     "files": "app/*"

@@ -12,7 +12,7 @@ const main = {
       { test: /\.js$/, loader: 'babel-loader' }
     ]
   },
-  target: 'electron',
+  target: 'electron-main',
   node: {
     __dirname: false
   }
