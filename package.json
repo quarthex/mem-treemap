@@ -24,7 +24,7 @@
     "eslint": "^4.13.0",
     "file-loader": "^1.1.11",
     "standard": "^11.0.1",
-    "webpack": "^4.3.0",
+    "webpack": "^4.28.3",
     "webpack-cli": "^2.0.13"
   },
   "build": {
