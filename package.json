@@ -18,7 +18,7 @@
     "babel-core": "^6.24.0",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.6.1",
-    "d3": "^5.0.0",
+    "d3": "^5.7.0",
     "electron": "^4.0.0",
     "electron-builder": "^20.38.4",
     "eslint": "^5.11.1",
