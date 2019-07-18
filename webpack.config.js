@@ -20,7 +20,7 @@ const main = {
 
 const renderer = {
   context: path.resolve(__dirname, 'src', 'renderer'),
-  entry: [ './index.js', './index.html' ],
+  entry: ['./index.js', './index.html'],
   output: {
     path: path.resolve(__dirname, 'app'),
     filename: 'renderer.js'
@@ -34,4 +34,4 @@ const renderer = {
   target: 'electron-renderer'
 }
 
-module.exports = [ main, renderer ]
+module.exports = [main, renderer]

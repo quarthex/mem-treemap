@@ -15,7 +15,7 @@ function memmapUnix () {
         reject(error)
       } else {
         const seenPids = new Set()
-        let data = stdout.split('\n').slice(1)
+        const data = stdout.split('\n').slice(1)
           .map(x => /^\s*([1-9][0-9]*)\s+([1-9][0-9]*)\s+([1-9][0-9]*)\s+([1-9][0-9]*)\s+(.+)$/.exec(x))
           .filter(x => x)
           .map(match => {
@@ -23,8 +23,8 @@ function memmapUnix () {
             seenPids.add(pid)
             // The ppid may be 0 for kernel helpers, coerce their parent to 1
             // for simplicity.
-            let ppid = +match[2] || 1
-            let pgrp = +match[3]
+            const ppid = +match[2] || 1
+            const pgrp = +match[3]
             return {
               pid,
               ppid,
