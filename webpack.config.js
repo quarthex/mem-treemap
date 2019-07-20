@@ -18,6 +18,21 @@ const main = {
   }
 }
 
+const preload = {
+  context: path.resolve(__dirname, 'src', 'renderer'),
+  entry: './preload.js',
+  output: {
+    path: path.resolve(__dirname, 'app'),
+    filename: 'preload.js'
+  },
+  module: {
+    rules: [
+      { test: /\.js$/, loader: 'babel-loader' },
+    ]
+  },
+  target: 'electron-preload'
+}
+
 const renderer = {
   context: path.resolve(__dirname, 'src', 'renderer'),
   entry: ['./index.js', './index.html'],
@@ -34,4 +49,4 @@ const renderer = {
   target: 'electron-renderer'
 }
 
-module.exports = [main, renderer]
+module.exports = [main, preload, renderer]

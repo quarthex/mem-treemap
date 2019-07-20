@@ -15,8 +15,14 @@ function memmapUnix () {
         reject(error)
       } else {
         const seenPids = new Set()
-        const data = stdout.split('\n').slice(1)
-          .map(x => /^\s*([1-9][0-9]*)\s+([1-9][0-9]*)\s+([1-9][0-9]*)\s+([1-9][0-9]*)\s+(.+)$/.exec(x))
+        const data = stdout
+          .split('\n')
+          .slice(1)
+          .map(x =>
+            /^\s*([1-9]\d*)\s+([1-9]\d*)\s+([1-9]\d*)\s+([1-9]\d*)\s+(.+)$/.exec(
+              x
+            )
+          )
           .filter(x => x)
           .map(match => {
             const pid = +match[1]
@@ -31,16 +37,23 @@ function memmapUnix () {
               pgrp,
               mem: +match[4],
               command: match[5],
-              shortCommand: match[5] ? match[5].split(' ')[0].split('/').pop() : ''
+              shortCommand: match[5]
+                ? match[5]
+                  .split(' ')[0]
+                  .split('/')
+                  .pop()
+                : ''
             }
           })
         // fixup ppid's of 1 when there's a group id that maps to a currently
         // existing pid.
         for (const proc of data) {
-          if (proc.ppid === 1 &&
-              proc.pgrp &&
-              proc.pgrp !== proc.pid &&
-              seenPids.has(proc.pgrp)) {
+          if (
+            proc.ppid === 1 &&
+            proc.pgrp &&
+            proc.pgrp !== proc.pid &&
+            seenPids.has(proc.pgrp)
+          ) {
             proc.ppid = proc.pgrp
           }
         }
@@ -60,17 +73,27 @@ switch (process.platform) {
     break
 
   default:
-    memmap = () => { throw new Error('Not yet implemented') }
+    memmap = () => {
+      throw new Error('Not yet implemented')
+    }
     break
 }
 
 function create () {
-  window = new BrowserWindow()
-  window.loadURL(url.format({
-    pathname: path.resolve(__dirname, 'index.html'),
-    protocol: 'file:',
-    slashes: true
-  }))
+  window = new BrowserWindow({
+    webPreferences: {
+      contextIsolation: true,
+      preload: path.resolve(__dirname, 'preload.js'),
+      enableRemoteModule: false
+    }
+  })
+  window.loadURL(
+    url.format({
+      pathname: path.resolve(__dirname, 'index.html'),
+      protocol: 'file:',
+      slashes: true
+    })
+  )
   const timer = setInterval(() => {
     memmap().then(map => {
       window.webContents.send('data', map, TOTALMEM)
@@ -92,4 +115,9 @@ app.on('activate', () => {
   if (window === null) {
     create()
   }
+})
+
+app.on('web-contents-created', (event, contents) => {
+  contents.on('will-navigate', event => event.preventDefault())
+  contents.on('new-window', event => event.preventDefault())
 })

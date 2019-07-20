@@ -1,5 +1,4 @@
 import * as d3 from 'd3'
-import { ipcRenderer } from 'electron'
 
 const svg = document.querySelector('svg')
 
@@ -84,10 +83,12 @@ function hovered (hover) {
 let lastMap, lastTotal
 window.addEventListener('resize', () => {
   treemap.size([svg.clientWidth, svg.clientHeight])
-  update(lastMap, lastTotal)
+  if (lastMap && lastTotal) {
+    update(lastMap, lastTotal)
+  }
 })
 
-ipcRenderer.on('data', (_, map, total) => {
+window.dataSource.on('data', (map, total) => {
   // create a root node
   map.push({ pid: 1, ppid: undefined, mem: 0, command: 'memmap' })
 
