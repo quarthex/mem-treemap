@@ -1,6 +1,5 @@
 language: node_js
 script:
-  - yarn
   - yarn test
   - yarn prod
   - yarn dist
