@@ -3,4 +3,4 @@ script:
   - yarn
   - yarn test
   - yarn prod
-  - yarn build
+  - yarn dist
