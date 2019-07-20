@@ -8,9 +8,7 @@ const main = {
     filename: 'index.js'
   },
   module: {
-    rules: [
-      { test: /\.js$/, loader: 'babel-loader' }
-    ]
+    rules: [{ test: /\.js$/, loader: 'babel-loader' }]
   },
   target: 'electron-main',
   node: {
@@ -26,9 +24,7 @@ const preload = {
     filename: 'preload.js'
   },
   module: {
-    rules: [
-      { test: /\.js$/, loader: 'babel-loader' },
-    ]
+    rules: [{ test: /\.js$/, loader: 'babel-loader' }]
   },
   target: 'electron-preload'
 }
