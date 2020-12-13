@@ -39,7 +39,11 @@ const renderer = {
   module: {
     rules: [
       { test: /\.js$/, loader: 'babel-loader' },
-      { test: /\.html$/, loader: 'file-loader?name=[name].[ext]' }
+      {
+        test: /\.html$/,
+        loader: 'file-loader',
+        options: { name: '[name].[ext]' }
+      }
     ]
   },
   target: 'electron-renderer'

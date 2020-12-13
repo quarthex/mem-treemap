@@ -6,26 +6,26 @@
   "author": "Romain Déoux <romain.deoux@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "prod": "NODE_ENV=production webpack-cli -p --progress",
-    "dev": "NODE_ENV=development webpack-cli -d --progress",
-    "watch": "NODE_ENV=development webpack-cli -d --progress --watch",
+    "prod": "NODE_ENV=production webpack-cli --mode=production --progress",
+    "dev": "NODE_ENV=development webpack-cli --mode=development --progress",
+    "watch": "NODE_ENV=development webpack-cli ---mode=development --progress --watch",
     "start": "electron app",
     "dist": "electron-builder",
     "test": "standard"
   },
   "dependencies": {},
   "devDependencies": {
-    "@babel/core": "^7.7.5",
-    "@babel/preset-env": "^7.7.6",
-    "babel-loader": "^8.0.6",
-    "d3": "^5.14.2",
-    "electron": "^9.3.1",
-    "electron-builder": "^22.4.1",
-    "eslint": "^7.4.0",
-    "file-loader": "^6.0.0",
-    "standard": "^14.3.3",
-    "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10"
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.10",
+    "babel-loader": "^8.2.2",
+    "d3": "^6.3.1",
+    "electron": "^11.1.0",
+    "electron-builder": "^22.9.1",
+    "eslint": "^7.15.0",
+    "file-loader": "^6.2.0",
+    "standard": "^16.0.3",
+    "webpack": "^5.10.1",
+    "webpack-cli": "^4.2.0"
   },
   "build": {
     "files": "app/*"
