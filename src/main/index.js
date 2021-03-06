@@ -82,9 +82,7 @@ switch (process.platform) {
 function create () {
   window = new BrowserWindow({
     webPreferences: {
-      contextIsolation: true,
-      preload: path.resolve(__dirname, 'preload.js'),
-      enableRemoteModule: false
+      preload: path.resolve(__dirname, 'preload.js')
     }
   })
   window.loadURL(

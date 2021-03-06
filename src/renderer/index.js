@@ -72,7 +72,7 @@ function update (map, total) {
 }
 
 function hovered (hover) {
-  return d =>
+  return (_, d) =>
     d3.selectAll(d.ancestors().map(d => d.node))
       .classed('node--hover', hover)
       .select('rect')
@@ -88,7 +88,7 @@ window.addEventListener('resize', () => {
   }
 })
 
-window.dataSource.on('data', (map, total) => {
+window['mem-treemap']((map, total) => {
   // create a root node
   map.push({ pid: 1, ppid: undefined, mem: 0, command: 'memmap' })
 
