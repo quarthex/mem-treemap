@@ -29,7 +29,7 @@ No.
 
 They're classy as fuck.
 
-[![Travis (.org)](https://img.shields.io/travis/quarthex/mem-treemap.svg?style=for-the-badge)](https://travis-ci.org/quarthex/mem-treemap)
+[![Travis (.com)](https://img.shields.io/travis/com/quarthex/mem-treemap?style=for-the-badge)](https://travis-ci.com/quarthex/mem-treemap)
 [![David](https://img.shields.io/david/quarthex/mem-treemap.svg?style=for-the-badge)](https://david-dm.org/quarthex/mem-treemap)
 [![David](https://img.shields.io/david/dev/quarthex/mem-treemap.svg?style=for-the-badge)](https://david-dm.org/quarthex/mem-treemap?type=dev)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg?style=for-the-badge)](https://standardjs.com)
