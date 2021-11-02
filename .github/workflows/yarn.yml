@@ -19,8 +19,6 @@ jobs:
       - run: yarn test
       - run: yarn prod
       - run: yarn dist
-      - uses: actions/upload-artifact@v2
-        with:
-          path:
-            dist/mem-treemap*.snap
-            dist/mem-treemap*.AppImage
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
