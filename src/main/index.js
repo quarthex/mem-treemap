@@ -39,9 +39,9 @@ function memmapUnix () {
               command: match[5],
               shortCommand: match[5]
                 ? match[5]
-                    .split(' ')[0]
-                    .split('/')
-                    .pop()
+                  .split(' ')[0]
+                  .split('/')
+                  .pop()
                 : ''
             }
           })
