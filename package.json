@@ -1,6 +1,6 @@
 {
   "name": "mem-treemap",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Memory map usage in a treemap",
   "main": "app/index.js",
   "author": "Romain Déoux <romain.deoux@gmail.com>",
@@ -19,13 +19,13 @@
     "@babel/preset-env": "^7.19.4",
     "babel-loader": "^9.0.1",
     "d3": "^7.4.4",
-    "electron": "^21.2.1",
-    "electron-builder": "^23.6.0",
+    "electron": "^26.1.0",
+    "electron-builder": "^24.6.3",
     "eslint": "^8.26.0",
     "file-loader": "^6.2.0",
     "standard": "^17.0.0",
     "webpack": "^5.74.0",
-    "webpack-cli": "^4.9.2"
+    "webpack-cli": "^5.1.4"
   },
   "build": {
     "files": "app/*"
